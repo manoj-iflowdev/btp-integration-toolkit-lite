@@ -1,0 +1,32 @@
+﻿{
+  "xsappname": "ItkApp",
+  "tenant-mode": "dedicated",
+  "scopes": [
+    {
+      "name": "$XSAPPNAME.ITKAdmin",
+      "description": "Manages ITK Settings"
+    },
+    {
+      "name": "$XSAPPNAME.JobScheduler",
+      "description": "ITK JobScheduler",
+      "grant-as-authority-to-apps": ["$XSSERVICENAME(ITKApp-jobscheduler)"]
+    }
+  ],
+  "attributes": [],
+  "authorities":["$ACCEPT_GRANTED_AUTHORITIES"],
+  "role-templates": [
+    {
+      "name": "ITKAdmin",
+      "description": "ITK Administrator",
+      "scope-references": [
+        "$XSAPPNAME.ITKAdmin"
+      ],
+      "attribute-references": []
+    },
+    { 
+      "name"               : "JobScheduler", 
+      "description"        : "ITK Job Scheduler", 
+      "scope-references"   : [ "$XSAPPNAME.JobScheduler"]
+      }
+  ]
+}
